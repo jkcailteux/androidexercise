@@ -2,7 +2,7 @@
 Knoda Android Developer Exercise
 ===============
 <p align="center">
-  <img src="http://imgur.com/1hhnxSg.png" style="width:200px;height:200px"/>
+  <img src="http://imgur.com/FFEwS4Z.png" style="width:200px;height:200px"/>
 </p>
 
 General Instructions
