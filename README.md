@@ -18,11 +18,11 @@ Things you'll need
 -------------------
 
 1. REST API endpoints for getting a list of the most recent predictions:
-Method: GET
-URL: http://api.knoda.com/api/predictions.json?recent=true&auth_token={token}
-Headers:
-	Content-Type: application/json; charset=utf-8;
-	Accept: application/json; api_version=3;
+Method: GET<br>
+URL: http://api.knoda.com/api/predictions.json?recent=true&auth_token={token}<br>
+Headers:<br>
+	Content-Type: application/json; charset=utf-8;<br>
+	Accept: application/json; api_version=3;<br>
 2. The project contains all the assets you will need in order to build out most of the UI.
 3. Quick JSON field descriptions
 
