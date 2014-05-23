@@ -1,20 +1,23 @@
-package com.knoda.exercise;
+package com.knoda.exercise.Activities;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
 
+import com.android.volley.RequestQueue;
+import com.knoda.exercise.Networking.APIController;
+import com.knoda.exercise.R;
 
 
 public class MainActivity extends Activity {
 
+    RequestQueue queue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,10 @@ public class MainActivity extends Activity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
+      APIController apiController = new APIController(this);
+
+      apiController.getPredictions(new ProgressDialog(this));
     }
 
 
