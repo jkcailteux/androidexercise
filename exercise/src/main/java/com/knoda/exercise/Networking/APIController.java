@@ -45,8 +45,11 @@ public class APIController {
         progressDialog.hide();
         ArrayList<HashMap<String, String>> predictionsList = new ArrayList<HashMap<String, String>>();
         SimpleAdapter adapter = new SimpleAdapter(listView.getContext(),predictionsList, R.layout.list_item_prediction,
-            new String[] {"username"},
-            new int[] {});
+            new String[] {"user_avatar","username","verified_account", "body","expires_at","created_at","agreed_count","disagreed_count",
+                "comment_count"},
+            new int[] {R.id.userpic,R.id.user,R.id.userverified, R.id.body,R.id.closes_textview,R.id.made_textview,R.id.agrees_textview,
+                R.id.agrees_textview,
+                R.id.comments_number});
         adapter.setViewBinder(new PredictionBinder());
         listView.setAdapter(adapter);
 
@@ -65,7 +68,7 @@ public class APIController {
         } catch (Exception e) {
 
         }
-
+        System.out.println("hello");
       }
     }, new Response.ErrorListener() {
       @Override
