@@ -2,8 +2,10 @@ package com.knoda.exercise.Networking;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
@@ -33,23 +35,23 @@ public class APIController {
     queue = Volley.newRequestQueue(c);
   }
 
-  public void getPredictions( final ListView listView ) {
-    final ProgressDialog progressDialog= new ProgressDialog(listView.getContext());
+  public void getPredictions(final ListView listView) {
+    final ProgressDialog progressDialog = new ProgressDialog(listView.getContext());
     progressDialog.setMessage("Loading Predictions...");
     progressDialog.show();
-
 
     JsonObjectRequest json = new JsonObjectRequest(APIurl, null, new Response.Listener<JSONObject>() {
       @Override
       public void onResponse(JSONObject jsonObject) {
         progressDialog.hide();
         ArrayList<HashMap<String, String>> predictionsList = new ArrayList<HashMap<String, String>>();
-        SimpleAdapter adapter = new SimpleAdapter(listView.getContext(),predictionsList, R.layout.list_item_prediction,
-            new String[] {"user_avatar","username","verified_account", "body","expires_at","created_at","agreed_count","disagreed_count",
+        SimpleAdapter adapter = new SimpleAdapter(listView.getContext(), predictionsList, R.layout.list_item_prediction,
+            new String[]{"user_avatar", "username", "verified_account", "body", "expires_at", "created_at", "agreed_count", "disagreed_count",
                 "comment_count"},
-            new int[] {R.id.userpic,R.id.user,R.id.userverified, R.id.body,R.id.closes_textview,R.id.made_textview,R.id.agrees_textview,
+            new int[]{R.id.userpic, R.id.user, R.id.userverified, R.id.body, R.id.closes_textview, R.id.made_textview, R.id.agrees_textview,
                 R.id.agrees_textview,
-                R.id.comments_number});
+                R.id.comments_number}
+        );
         adapter.setViewBinder(new PredictionBinder());
         listView.setAdapter(adapter);
 
@@ -64,16 +66,15 @@ public class APIController {
             }
             predictionsList.add(item);
           }
-
         } catch (Exception e) {
-
+          Log.e("APIController", e.getMessage());
         }
-        System.out.println("hello");
       }
     }, new Response.ErrorListener() {
       @Override
       public void onErrorResponse(VolleyError volleyError) {
         progressDialog.hide();
+        Toast.makeText(listView.getContext(),"Could not get predictions.",Toast.LENGTH_SHORT).show();
       }
     });
     //10 Second timeout

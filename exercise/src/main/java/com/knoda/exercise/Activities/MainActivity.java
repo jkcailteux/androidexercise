@@ -28,21 +28,17 @@ public class MainActivity extends ActionBarActivity {
           .add(R.id.container, new PlaceholderFragment())
           .commit();
     }
-    apiController= new APIController(this);
+    apiController = new APIController(this);
   }
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
-    // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.main, menu);
     return true;
   }
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
-    // Handle action bar item clicks here. The action bar will
-    // automatically handle clicks on the Home/Up button, so long
-    // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
     if (id == R.id.action_settings) {
       return true;
@@ -50,15 +46,14 @@ public class MainActivity extends ActionBarActivity {
     return super.onOptionsItemSelected(item);
   }
 
-  /**
-   * A placeholder fragment containing a simple view.
-   */
   public static class PlaceholderFragment extends Fragment {
     ListView listView;
     MainActivity mainActivity;
+
     public PlaceholderFragment() {
     }
-    private void loadPage(){
+
+    private void loadPage() {
       mainActivity.apiController.getPredictions(listView);
     }
 
@@ -68,10 +63,11 @@ public class MainActivity extends ActionBarActivity {
       View rootView = inflater.inflate(R.layout.fragment_main, container, false);
       return rootView;
     }
+
     @Override
-    public void onActivityCreated(Bundle savedInstanceState){
+    public void onActivityCreated(Bundle savedInstanceState) {
       super.onActivityCreated(savedInstanceState);
-      mainActivity=(MainActivity)getActivity();
+      mainActivity = (MainActivity) getActivity();
       listView = (ListView) mainActivity.findViewById(R.id.mainListview);
       loadPage();
     }
