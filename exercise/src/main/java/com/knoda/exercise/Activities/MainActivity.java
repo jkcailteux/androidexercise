@@ -1,8 +1,8 @@
 package com.knoda.exercise.Activities;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,7 +14,7 @@ import com.knoda.exercise.Networking.APIController;
 import com.knoda.exercise.R;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
   APIController apiController;
 

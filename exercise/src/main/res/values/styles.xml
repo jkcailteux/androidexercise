@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/KnodaActionBar</item>
     </style>
     <style name="KnodaActionBar" parent="android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">

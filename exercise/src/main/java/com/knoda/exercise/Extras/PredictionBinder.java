@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by Jeff on 5/23/2014.
@@ -53,6 +54,7 @@ public class PredictionBinder implements SimpleAdapter.ViewBinder {
       case R.id.made_textview:
         String made="";
         Date d1 =formatDate(textRepresentation);
+
         //No idea of timezone so assume Central
         Long time1= ((new Date().getTime()-d1.getTime())/1000);
         if ((time1/(30*24*60*60)) >=1){
@@ -98,6 +100,7 @@ public class PredictionBinder implements SimpleAdapter.ViewBinder {
   private Date formatDate(String text){
     try{
       SimpleDateFormat formatter=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+      formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
       return formatter.parse(text);
     }catch (Exception e){
     }
